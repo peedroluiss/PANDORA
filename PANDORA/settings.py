@@ -49,8 +49,11 @@ INSTALLED_APPS = [
     'Models.Municipio',
     'Models.Programa',
     'Models.Catedratico',
+    'crispy_forms',
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

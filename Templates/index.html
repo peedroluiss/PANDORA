@@ -38,8 +38,14 @@
           GESTION
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="">Lista de Inscripciones</a>
-            <a class="dropdown-item" href="">Realizar Inscripciones</a>
+          <a class="dropdown-item" href={% url 'registrarDepartamento' %}>Registrar Departamento</a>
+          <a class="dropdown-item" href={% url 'listarDepartamento' %}>Mostrar Departamentos</a>
+          <a class="dropdown-item" href={% url 'registrarDirector' %}>Registrar Director</a>
+          <a class="dropdown-item" href={% url 'listarDirectores' %}>Mostrar Directores</a>
+          <a class="dropdown-item" href={% url 'registrarMunicipio' %}>Registrar Municipio</a>
+          <a class="dropdown-item" href={% url 'listarMunicipios' %}>Mostrar Municipios</a>
+          <a class="dropdown-item" href={% url 'registrarEstablecimiento' %}>Registrar Establecimiento</a>
+          <a class="dropdown-item" href={% url 'listarEstablecimientos' %}>Mostrar Establecimientos</a>
           <div class="dropdown-divider"></div>
         </div>
       </li>

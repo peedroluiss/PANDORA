@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% block content %}
+    <p></p>
+    <h1 align="center">Departamentos registrados</h1>
+    <p></p>
+    <div class="row col-12 justify-content-end mb-2 pr-0">
+        <!--<button type="button" class="btn btn-success col-md-3">Registrar Alumno</button> -->
+        <a class="btn btn-success col-md-3" href="{% url 'registrarDepartamento' %}">Registrar departamento</a>
+    </div>
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for departamento in departamentos %}
+            <tr>
+            <th scope="row">{{ departamento.id_depa }}</th>
+            <td>{{ departamento.Nombre }}</td>
+            <td>
+                <a href="{% url 'MODIFICARD' departamento.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                    <span class="text">Editar</span>
+                </a>
+            </td>
+            <td>
+              <a href="{% url 'ELIMINARD' departamento.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                    <span class="text">Eliminar</span>
+                </a>
+            </td>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

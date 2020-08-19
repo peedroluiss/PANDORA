@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <p></p>
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+          Ha ocurrido un error en el proceso
+        </div>
+    {% endif %}
+    <h1 align="center">Registro de directores</h1>
+    <form action="{% url 'guardarDirector' %}" method="post">
+    {% csrf_token %}
+    {% if mensaje %}
+         <div class="alert alert-success" role="alert">
+                Director registrado exitosamente
+         </div>
+    {% endif %}
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a class="btn btn-warning" href="{% url 'listarDirectores' %}">Cancelar</a>
+    </form>
+
+
+{% endblock %}
