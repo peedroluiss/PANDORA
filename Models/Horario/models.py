@@ -5,4 +5,4 @@ class Horario(models.Model):
     Descripcion= models.CharField(max_length=30)
 
     def __str__(self):
-        return self.Nombre
+        return self.Descripcion

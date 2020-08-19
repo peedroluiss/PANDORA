@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+
+{% block content  %}
+    <p></p>
+    <h1 align="center">Programas de Cursos Registrados</h1>
+    <p></p>
+
+        <div class="row col-12 justify-content-end mb-2 pr-0">
+
+        <a class="btn btn-success col-md-3" href="{% url 'registrarPrograma' %}">Registrar Programa</a>
+
+        </div>
+            <p></p>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Contenido</th>
+         <th scope="col">Descripcion</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for programas in lb_programas %}
+     <tr>
+      <th scope="row">{{ programas.id_prog }}</th>
+      <td>{{ programas.Contenidocbn }}</td>
+      <td>{{ programas.Descripcion }}</td>
+    <!--EDITAR-->
+                        <td>
+
+                                <div class="my-2"></div>
+                            <a href="{% url 'modificarProgramas' programas.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Editar</span>
+                            </a>
+                        </td>
+
+      <!-- ELIMINAR -->
+                          <td>
+                            <div class="my-2"></div>
+                            <a href="{% url 'eliminarProgramas' programas.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                            <div class="my-2"></div>
+                        </td>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}l>

@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <div id="content-wrapper" class="d-flex flex-column">
+    {% if form.errors %}
+
+        <div class="alert alert-danger" role="alert">
+             No fue Procesar su Solicitud
+        </div>
+
+    {% endif %}
+
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <h1>Registro de Grado </h1>
+
+    <form action = "" method="POST" >
+
+        {% csrf_token %}
+        {% if mensaje %}
+
+        <div class="alert alert-success" role="alert">
+            Registro Registrado exitosamente
+        </div>
+        {% endif %}
+
+        {{ form|crispy}}
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+    <a class="btn btn-warning" href="{% url 'listarGrados' %}">Cancelar</a>
+    <a class="btn btn-success col-md-1" href="{% url 'listarGrados' %}">Registrados</a>
+
+    </form>
+    </div>
+{% endblock %}>
