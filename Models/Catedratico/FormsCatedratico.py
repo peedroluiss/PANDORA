@@ -1,8 +1,8 @@
 from django import forms
 from django.forms import  DateInput
-from Models.Alumno.models import Alumno
+from Models.Catedratico.models import Catedratico
 
-class FormularioAlumno(forms.ModelForm):
+class FormularioCatedratico(forms.ModelForm):
     class Meta:
-        model = Alumno
+        model = Catedratico
         fields = '__all__'

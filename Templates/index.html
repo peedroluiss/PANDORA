@@ -27,8 +27,8 @@
           GESTION
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="">Registro de Alumnos</a>
-            <a class="dropdown-item" href="">Visualizar Alumnos</a>
+          <a class="dropdown-item" href="">Registro</a>
+            <a class="dropdown-item" href="">Visualizar</a>
           <div class="dropdown-divider"></div>
         </div>
       </li>
@@ -49,12 +49,16 @@
           GESTION
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="">Registro de Grados</a>
-
-            <a class="dropdown-item" href="">Visualizar Grados</a>
+            <a class="dropdown-item" href="{% url 'registrarAlumno' %}">Registro de Alumnos</a>
+            <a class="dropdown-item" href="{% url 'listarAlumnos' %}">Visualizar de Alumnos</a>
+            <a class="dropdown-item" href="{% url 'registrarCatedratico' %}">Registro de Catedraticos</a>
+            <a class="dropdown-item" href="{% url 'listarCatedraticos' %}">Visualizar de Catedraticos</a>
+            <a class="dropdown-item" href="{% url 'registrarSeccion' %}">Registro de Secciones</a>
+            <a class="dropdown-item" href="{% url 'listarSeccions' %}">Visualizar de Secciones</a>
           <div class="dropdown-divider"></div>
         </div>
       </li>
+
 
     </ul>
 

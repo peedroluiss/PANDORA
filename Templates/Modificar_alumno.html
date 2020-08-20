@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <div id="content-wrapper" class="d-flex flex-column">
+    {% if form.errors %}
+
+        <div class="alert alert-danger" role="alert">
+             No fue Procesar su Solicitud
+        </div>
+
+    {% endif %}
+
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <h1>Registro de Alumnos </h1>
+
+    <form action = "" method="POST" >
+
+        {% csrf_token %}
+        {% if mensaje %}
+
+        <div class="alert alert-success" role="alert">
+            Alumno Registrado exitosamente
+        </div>
+        {% endif %}
+
+        {{ form|crispy}}
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </form>
+    </div>
+
+
+
+
+{% endblock %}
