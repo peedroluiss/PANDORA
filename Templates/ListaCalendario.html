@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block content  %}
+    <p></p>
+    <h1 align="center">Calendarios Registrados</h1>
+    <p></p>
+
+        <div class="row col-12 justify-content-end mb-2 pr-0">
+            <!--<button type="button" class="btn btn-success col-md-3">Registrar Alumno</button> -->
+        <a class="btn btn-success col-md-3" href="{% url 'registrarCalendario' %}">Registrar Calendario</a>
+
+        </div>
+            <p></p>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Descripcion</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for calendarios in lb_calendarios %}
+     <tr>
+      <th scope="row">{{ calendarios.id_ca }}</th>
+      <td>{{ calendarios.Descripcion }}</td>
+
+
+                        <td>
+
+                                <div class="my-2"></div>
+                            <a href="{% url 'modificarCalendarios' calendarios.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Editar</span>
+                            </a>
+                        </td>
+
+                          <td>
+                            <div class="my-2"></div>
+                            <a href="{% url 'eliminarCalendarios' calendarios.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                            <div class="my-2"></div>
+                        </td>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}l>

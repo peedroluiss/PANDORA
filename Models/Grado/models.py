@@ -8,8 +8,7 @@ class Grado(models.Model):
     id_grado = models.AutoField(primary_key=True)
     Nombre = models.CharField(max_length=30)
     programa_id_prog = models.ForeignKey(Programa, on_delete=models.CASCADE)
-    calendario_id_calendario = models.ForeignKey(Calendario, on_delete=models.CASCADE)
     horario_id_hora = models.ForeignKey(Horario, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.Nombre
+        return self.id_grado

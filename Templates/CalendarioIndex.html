@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <p></p>
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+          A simple danger alert—check it out!
+        </div>
+    {% endif %}
+
+    <h1 align="center">Registro de Calendario</h1>
+    <form action="{% url 'guardarCalendario'%}" method="POST">
+        {% csrf_token %}
+        {% if mensaje %}
+
+            <div class="alert alert-success" role="alert">
+                Horario Registrado Exitosamente!!!
+            </div>
+        {% endif %}
+
+        {{form|crispy}}
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a class="btn btn-warning" href="{% url 'listarCalendarios' %}">Cancelar</a>
+    <a class="btn btn-success col-md-1" href="{% url 'listarCalendarios' %}">Registrados</a>
+    </form>
+{% endblock %}
