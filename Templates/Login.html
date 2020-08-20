@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>MINEDUC</title>
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static 'assets/dist/css/bootstrap.css'%}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+
+
+    <link href="{% static 'sign-in/signin.css' %}" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <form class="form-signin" method="post">
+        {%  csrf_token %}
+       <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://scontent.fgua5-1.fna.fbcdn.net/v/t1.0-9/117299860_3525487644152681_8279732044697076864_o.jpg?_nc_cat=1&_nc_sid=09cbfe&_nc_ohc=kUkqz1goJuAAX9jPlAT&_nc_ht=scontent.fgua5-1.fna&oh=2b6a2c288b1c68ae8229b1be6ee011fa&oe=5F622EBE" alt="Card image cap">
+
+</div>
+
+  <h1 class="h3 mb-3 font-weight-normal">Inicia Sesion</h1>
+  <label for="inputEmail" class="sr-only">Usuario</label>
+  <input type="text" class="form-control" placeholder="Usuario" name="username" required autofocus>
+  <label for="inputPassword" class="sr-only">Contraseña</label>
+  <input type="password"  class="form-control" placeholder="Contraseña" name="password" required>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Recuerdame
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2020-2024</p>
+</form>
+</body>
+</html>
