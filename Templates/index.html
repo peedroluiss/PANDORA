@@ -25,11 +25,27 @@
           GESTION DE GRADOS
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
             <a class="dropdown-item" href="{% url 'listarGrados' %}">Grados</a>
-          <a class="dropdown-item" href="{% url 'listarHorarios' %}">Horario</a>
+            <a class="dropdown-item" href="{% url 'listarHorarios' %}">Horario</a>
             <a class="dropdown-item" href="{% url 'listarCalendarios' %}">Calendario</a>
             <a class="dropdown-item" href="{% url 'listarProgramas' %}">Programa de Cursos</a>
 
+            <a class="dropdown-item" href="{% url 'registrarAlumno' %}">Registro de Alumnos</a>
+            <a class="dropdown-item" href="{% url 'listarAlumnos' %}">Visualizar de Alumnos</a>
+            <a class="dropdown-item" href="{% url 'registrarCatedratico' %}">Registro de Catedraticos</a>
+            <a class="dropdown-item" href="{% url 'listarCatedraticos' %}">Visualizar de Catedraticos</a>
+            <a class="dropdown-item" href="{% url 'registrarSeccion' %}">Registro de Secciones</a>
+            <a class="dropdown-item" href="{% url 'listarSeccions' %}">Visualizar de Secciones</a>
+
+            <a class="dropdown-item" href={% url 'registrarDepartamento' %}>Registrar Departamento</a>
+            <a class="dropdown-item" href={% url 'listarDepartamento' %}>Mostrar Departamentos</a>
+            <a class="dropdown-item" href={% url 'registrarDirector' %}>Registrar Director</a>
+            <a class="dropdown-item" href={% url 'listarDirectores' %}>Mostrar Directores</a>
+            <a class="dropdown-item" href={% url 'registrarMunicipio' %}>Registrar Municipio</a>
+            <a class="dropdown-item" href={% url 'listarMunicipios' %}>Mostrar Municipios</a>
+            <a class="dropdown-item" href={% url 'registrarEstablecimiento' %}>Registrar Establecimiento</a>
+            <a class="dropdown-item" href={% url 'listarEstablecimientos' %}>Mostrar Establecimientos</a>
           <div class="dropdown-divider"></div>
         </div>
       </li>
