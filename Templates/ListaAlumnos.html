@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block content  %}
+    <p></p>
+    <h1 align="center">Alumnos Registrados</h1>
+    <p></p>
+
+        <div class="row col-12 justify-content-end mb-2 pr-0">
+            <!--<button type="button" class="btn btn-success col-md-3">Registrar Alumno</button> -->
+        <a class="btn btn-success col-md-3" href="{% url 'registrarAlumno' %}">Registrar Alumno</a>
+
+        </div>
+            <p></p>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Direccion</th>
+        <th scope="col">Tutelar</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for alumno in lb_alumnos %}
+     <tr>
+      <th scope="row">{{ alumno.id_alumno }}</th>
+      <td>{{ alumno.Nombre }}</td>
+      <td>{{alumno.Apellido}}</td>
+      <td>{{alumno.Direccion}}</td>
+      <td>{{alumno.Tutelar}}</td>
+      <td>{{alumno.Telefono}}</td>
+      <td>
+                            <div class="my-2"></div>
+                            <a href="{% url 'ELIMINARALUMNO' alumno.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                            <div class="my-2"></div>
+      </td>
+      <td>
+
+                                <div class="my-2"></div>
+                            <a href="{% url 'MODIFICARALUMNO' alumno.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Editar</span>
+                            </a>
+                        </td>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}

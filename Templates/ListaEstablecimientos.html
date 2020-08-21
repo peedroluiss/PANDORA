@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <p></p>
+    <h1 align="center">Establecimientos registrados</h1>
+    <p></p>
+    <div class="row col-12 justify-content-end mb-2 pr-0">
+        <!--<button type="button" class="btn btn-success col-md-3">Registrar Alumno</button> -->
+        <a class="btn btn-success col-md-3" href="{% url 'registrarEstablecimiento' %}">Registrar establecimiento</a>
+    </div>
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Director</th>
+            <th scope="col">Municipio</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for establecimiento in establecimientos %}
+            <tr>
+            <th scope="row">{{ establecimiento.id_esta }}</th>
+            <td>{{ establecimiento.Nombre }}</td>
+            <td>{{ establecimiento.director_id_direct }}</td>
+            <td>{{ establecimiento.municipio_id_muni }}</td>
+            <td>
+                <a href="{% url 'MODIFICARE' establecimiento.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                    <span class="text">Editar</span>
+                </a>
+            </td>
+            <td>
+              <a href="{% url 'ELIMINARE' establecimiento.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                    <span class="text">Eliminar</span>
+                </a>
+            </td>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

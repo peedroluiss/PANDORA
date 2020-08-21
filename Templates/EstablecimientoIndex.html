@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <div id="content-wrapper" class="d-flex flex-column">
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+             No fue posible registrar establecimiento
+        </div>
+    {% endif %}
+    <p></p>
+    <p></p>
+    <p></p>
+    <h1> Registro de establecimientos</h1>
+
+    <form action = "{% url 'guardarEstablecimiento' %}" method="POST" >
+
+        {% csrf_token %}
+        {% if mensaje %}
+
+        <div class="alert alert-success" role="alert">
+            Establecimiento registrado correctamente
+        </div>
+        {% endif %}
+        {{ form|crispy}}
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-warning" href="{% url 'listarEstablecimientos' %}">Cancelar</a>
+    </form>
+    </div>
+{% endblock %}

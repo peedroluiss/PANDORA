@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+
+{% block content  %}
+    <p></p>
+    <h1 align="center">Catedraticos Registrados</h1>
+    <p></p>
+
+        <div class="row col-12 justify-content-end mb-2 pr-0">
+            <!--<button type="button" class="btn btn-success col-md-3">Registrar Catedratico</button> -->
+        <a class="btn btn-success col-md-3" href="{% url 'registrarCatedratico' %}">Registrar Catedratico</a>
+
+        </div>
+            <p></p>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Establecimiento</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for Catedratico in lb_Catedraticos %}
+     <tr>
+      <th scope="row">{{ Catedratico.id_catedra }}</th>
+      <td>{{ Catedratico.Nombre }}</td>
+      <td>{{Catedratico.Apellido}}</td>
+      <td>{{Catedratico.Direccion}}</td>
+      <td>{{Catedratico.establecimiento_id_esta}}</td>
+
+      <td>
+                            <div class="my-2"></div>
+                            <a href="{% url 'ELIMINARCATEDRATICO' Catedratico.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                            <div class="my-2"></div>
+      </td>
+      <td>
+
+                                <div class="my-2"></div>
+                            <a href="{% url 'MODIFICARCATEDRATICO' Catedratico.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Editar</span>
+                            </a>
+                        </td>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}

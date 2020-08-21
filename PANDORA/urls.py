@@ -20,6 +20,13 @@ from Models.Calendario.views import FormularioCalendarioView
 from Models.Grado.views import FormularioGradoView
 from Models.Horario.views import FormularioHorarioView
 from Models.Programa.views import FormularioProgramaView
+from Models.Alumno.views import FormularioAlumnoView
+from Models.Catedratico.views import FormularioCatedraticoView
+from Models.Seccion.views import FormularioSeccionView
+from Models.Departamento.views import FormularioDepartamentoView
+from Models.Director.views import FormularioDirectorView
+from Models.Establecimiento.views import FormularioEstablecimientoView
+from Models.Municipio.views import FormularioMunicipioView
 from Views.HomeView import HomeView
 
 urlpatterns = [
@@ -52,5 +59,54 @@ urlpatterns = [
     path("listarGrados/", FormularioGradoView.listar_grado, name='listarGrados'),
     path("editarGrados/<id>", FormularioGradoView.modificarGrado, name="modificarGrados"),
     path("listarGrados/<id>", FormularioGradoView.eliminarGrado, name="eliminarGrados"),
+
+# URL DE ALUMNOS - MYNORB
+     path("registrarAlumno/", FormularioAlumnoView.index, name='registrarAlumno'),
+     path("guardarAlumno/", FormularioAlumnoView.procesar_formulario, name='guardarAlumno'),
+     path("listarAlumnos/", FormularioAlumnoView.listar_alumnos, name='listarAlumnos'),
+     path("listarAlumnos/<id>",FormularioAlumnoView.eliminarAlumno, name="ELIMINARALUMNO"),
+     path("editarAlumnos/<id>",FormularioAlumnoView.modificarAlumno, name="MODIFICARALUMNO"),
+
+# URL DE CATEDRATICOS - MYNORB
+     path("registrarCatedratico/", FormularioCatedraticoView.index, name='registrarCatedratico'),
+     path("guardarCatedratico/", FormularioCatedraticoView.procesar_formulario_catedratico, name='guardarCatedratico'),
+     path("listarCatedraticos/", FormularioCatedraticoView.listar_Catedraticos, name='listarCatedraticos'),
+     path("listarCatedraticos/<id>",FormularioCatedraticoView.eliminarCatedratico, name="ELIMINARCATEDRATICO"),
+     path("editarCatedraticos/<id>",FormularioCatedraticoView.modificarCatedratico, name="MODIFICARCATEDRATICO"),
+
+# URL DE SECCION - MYNORB
+     path("registrarSeccion/", FormularioSeccionView.index, name='registrarSeccion'),
+     path("guardarSeccion/", FormularioSeccionView.procesar_formulario_seccion, name='guardarSeccion'),
+     path("listarSeccions/", FormularioSeccionView.listar_Seccions, name='listarSeccions'),
+     path("listarSeccions/<id>",FormularioSeccionView.eliminarSeccion, name="ELIMINARSECCION"),
+     path("editarSeccions/<id>",FormularioSeccionView.modificarSeccion, name="MODIFICARSECCION"),
+
+    # RUTAS DEPARTAMENTO - WILSON
+    path('registrarDepartamento/', FormularioDepartamentoView.index, name='registrarDepartamento'),
+    path('guardarDepartamento/', FormularioDepartamentoView.procesar_formulario, name='guardarDepartamento'),
+    path('listarDepartamento/', FormularioDepartamentoView.listar_departamentos, name='listarDepartamento'),
+    path("editarDepartamentos/<id>", FormularioDepartamentoView.modificarD, name="MODIFICARD"),
+    path("listarDepartamento/<id>", FormularioDepartamentoView.eliminarD, name="ELIMINARD"),
+
+    # RUTAS DIRECTOR - WILSON
+    path('registrarDirector/', FormularioDirectorView.index, name='registrarDirector'),
+    path('guardarDirector/', FormularioDirectorView.procesar_formulario, name='guardarDirector'),
+    path('listarDirectores/', FormularioDirectorView.listar_directores, name='listarDirectores'),
+    path("editarDirectores/<id>", FormularioDirectorView.modificarDi, name="MODIFICARDI"),
+    path("listarDirectores/<id>", FormularioDirectorView.eliminarDi, name="ELIMINARDI"),
+
+    # RUTAS MUNICIPIO - WILSON
+    path('registrarMuncipio/', FormularioMunicipioView.index, name='registrarMunicipio'),
+    path('guardarMunicipio/', FormularioMunicipioView.procesar_formulario, name='guardarMunicipio'),
+    path('listarMunicipios/', FormularioMunicipioView.listar_municipios, name='listarMunicipios'),
+    path("editarMunicipios/<id>", FormularioMunicipioView.modificarM, name="MODIFICARM"),
+    path("listarMunicipios/<id>", FormularioMunicipioView.eliminarM, name="ELIMINARM"),
+
+    # RUTAS ESTABLECIMIENTO -WILSON
+    path('registrarEstablecimiento/', FormularioEstablecimientoView.index, name='registrarEstablecimiento'),
+    path('guardarEstablecimiento/', FormularioEstablecimientoView.procesar_formulario, name='guardarEstablecimiento'),
+    path('listarEstablecimientos/', FormularioEstablecimientoView.listar_establecimientos, name='listarEstablecimientos'),
+    path("editarEstablecimientos/<id>", FormularioEstablecimientoView.modificarE, name="MODIFICARE"),
+    path("listarEstablecimientos/<id>", FormularioEstablecimientoView.eliminarE, name="ELIMINARE"),
 ]
 

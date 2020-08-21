@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+
+{% block content  %}
+    <p></p>
+    <h1 align="center">Seccions Registrados</h1>
+    <p></p>
+
+        <div class="row col-12 justify-content-end mb-2 pr-0">
+            <!--<button type="button" class="btn btn-success col-md-3">Registrar Seccion</button> -->
+        <a class="btn btn-success col-md-3" href="{% url 'registrarSeccion' %}">Registrar Seccion</a>
+
+        </div>
+            <p></p>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for Seccion in lb_Seccions %}
+     <tr>
+      <th scope="row">{{ Seccion.id_Seccion }}</th>
+      <td>{{ Seccion.Nombre }}</td>
+
+      <td>
+                            <div class="my-2"></div>
+                            <a href="{% url 'ELIMINARSECCION' Seccion.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                            <div class="my-2"></div>
+      </td>
+      <td>
+
+                                <div class="my-2"></div>
+                            <a href="{% url 'MODIFICARSECCION' Seccion.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Editar</span>
+                            </a>
+                        </td>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}
