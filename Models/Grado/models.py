@@ -11,4 +11,4 @@ class Grado(models.Model):
     horario_id_hora = models.ForeignKey(Horario, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.id_grado
+        return '{}'.format(self.Nombre)

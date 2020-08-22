@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 from Models.Establecimiento.FormsE import FormsEstablecimiento
 from Models.Establecimiento.models import Establecimiento
@@ -40,3 +42,22 @@ class FormularioEstablecimientoView(HttpRequest):
     def eliminarE(request, id):
         Establecimiento.objects.filter(id_esta=id).delete()
         return redirect(to="listarEstablecimientos")
+
+
+    def Reportpdf(self, *args, **kwargs):
+
+        template = get_template('ReportePDF.html')
+        context = {'report': Establecimiento.objects.all(),
+                   'comp': {'name': 'Reporte de Establecimientos'}
+                   }
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="Establecimientos.pdf"'
+        pisaStatus = pisa.CreatePDF(
+
+            html, dest=response)
+
+        if pisaStatus.err:
+            return HttpResponse('we had some errors <pre>' + html + '</pre>')
+
+        return response

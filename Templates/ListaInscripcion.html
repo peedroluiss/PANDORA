@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content  %}
+    <p></p>
+    <h1 align="center">Lista de Inscritos</h1>
+    <p></p>
+
+        <div class="row col-12 justify-content-end mb-2 pr-0">
+            <!--<button type="button" class="btn btn-success col-md-3">Registrar Inscripcion</button> -->
+        <a class="btn btn-success col-md-3" href="{% url 'registrarInscripcion' %}">Registrar Inscripcion</a>
+
+        </div>
+            <p></p>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Grado</th>
+      <th scope="col">Seccion</th>
+        <th scope="col">Alumno</th>
+        <th scope="col">Establecimiento</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for Inscripcion in lb_Inscripcions %}
+     <tr>
+      <th scope="row">{{ Inscripcion.id_ins }}</th>
+      <td>{{ Inscripcion.fecha }}</td>
+      <td>{{Inscripcion.grado_id_grado}}</td>
+      <td>{{Inscripcion.seccion_id_seccion}}</td>
+      <td>{{Inscripcion.alumno_id_alumno}}</td>
+      <td>{{Inscripcion.establecimiento_id_esta}}</td>
+      <td>
+                            <div class="my-2"></div>
+                            <a href="{% url 'ELIMINARINSCRIPCION' Inscripcion.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                            <div class="my-2"></div>
+      </td>
+      <td>
+
+                                <div class="my-2"></div>
+                            <a href="{% url 'MODIFICARINSCRIPCION' Inscripcion.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Editar</span>
+                            </a>
+                        </td>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}
