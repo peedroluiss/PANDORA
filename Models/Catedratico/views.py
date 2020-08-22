@@ -1,7 +1,12 @@
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
 from Models.Catedratico.FormsCatedratico import FormularioCatedratico
 from Models.Catedratico.models import Catedratico
+
+
 
 
 class FormularioCatedraticoView(HttpRequest):
@@ -42,3 +47,25 @@ class FormularioCatedraticoView(HttpRequest):
                     data['mensaje'] = "Se ha actualizado el registro."
                     data['form'] = formulario
             return render(request, 'Modificar_catedratico.html', data)
+
+    def listar_Catedraticos2(request):
+        Catedraticos = Catedratico.objects.all()
+        return render(request, "Reportes_catedraticos.html",{"lb_Catedraticos": Catedraticos})
+
+
+    def Reportpdfcatedratico(self, *args, **kwargs):
+        template = get_template('ReporteCatedratico.html')
+        context = {'report': Catedratico.objects.all(),
+                   'comp': {'name': 'Reporte de Catedraticos'}
+                   }
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="Catedraticos.pdf"'
+        pisaStatus = pisa.CreatePDF(
+
+            html, dest=response)
+
+        if pisaStatus.err:
+            return HttpResponse('we had some errors <pre>' + html + '</pre>')
+
+        return response

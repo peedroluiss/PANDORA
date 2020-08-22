@@ -11,4 +11,4 @@ class Establecimiento(models.Model):
     municipio_id_muni= models.ForeignKey(Municipio, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.Nombre
+        return '{}'.format(self.Nombre)

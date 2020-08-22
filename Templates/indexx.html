@@ -41,11 +41,8 @@
   </button>
 
   <ul class="navbar-nav px-3">
-
     <li class="nav-item text-nowrap">
-
-      <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
-        <h1 class="h6" >{{user.username | upper}}</h1>
+      <a class="nav-link" href="#">Sign out</a>
     </li>
   </ul>
 </nav>
@@ -55,117 +52,32 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
-              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Gestion Grado</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'home' %}">
+            <a class="nav-link active" href="#">
               <span data-feather="home"></span>
               Inicio <span class="sr-only">(current)</span>
             </a>
-
           </li>
-               <li class="nav-item">
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarGrados'  %}">
-              <span data-feather="layers"></span>
-              Grados
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Establecimientos
             </a>
           </li>
-          </li>
-
-             <li class="nav-item">
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarHorarios'  %}">
-              <span data-feather="layers"></span>
-             Horarios
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Directores
             </a>
           </li>
-          </li>
-                <li class="nav-item">
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarProgramas'  %}">
-              <span data-feather="layers"></span>
-             Programas
-            </a>
-          </li>
-          </li>
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Gestion Inscripcion</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarAlumnos' %}">
-              <span data-feather="file" role="button" ></span>
-              Alumnos
-            </a>
-          </li>
-             <li class="nav-item">
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarCatedraticos'  %}">
-              <span data-feather="layers"></span>
-              Catedraticos
-            </a>
-          </li>
-          </li>
-            <li class="nav-item">
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarSeccions'  %}">
-              <span data-feather="layers"></span>
-             Seccion
-            </a>
-          </li>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarInscripcions' %}">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
               <span data-feather="users"></span>
               Inscripciones
             </a>
           </li>
-             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Gestion Establecimiento</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarEstablecimientos' %}">
-              <span data-feather="file" role="button" ></span>
-              Establecimiento
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarDirectores' %}">
-              <span data-feather="file" role="button"></span>
-              Directores
-            </a>
-          </li>
-               <li class="nav-item">
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarMunicipios'  %}">
-              <span data-feather="layers"></span>
-              Municipios
-            </a>
-          </li>
-          </li>
-             <li class="nav-item">
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'listarDepartamento'  %}">
-              <span data-feather="layers"></span>
-              Departamentos
-            </a>
-          </li>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'report' %}">
+            <a class="nav-link" href="#">
               <span data-feather="bar-chart-2"></span>
               Reportes
             </a>
@@ -178,22 +90,58 @@
           </li>
         </ul>
 
-
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Bienvenido</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
         <ul class="nav flex-column mb-2">
-
-
-
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Departamentos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Municipios
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Catedraticos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Grados
+            </a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Secciones
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Gobierno de Guatemala</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
 
           </div>
-
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            Calendario
+          </button>
         </div>
       </div>
 {% block content %}

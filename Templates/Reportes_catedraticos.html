@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+{% block content  %}
+    <p></p>
+    <h1 align="center">Catedraticos Registrados</h1>
+
+ <form method="GET" action=".">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="nombre" placeholder="Nombre" />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="apellidos" placeholder="Apellido" />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="establecimiento" placeholder="Establecimiento" />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+             <button href="{% url 'filtrodjango' %}" type="submit" class="btn btn-primary">Search</button>
+        </div>
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Establecimiento</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for Catedratico in lb_Catedraticos %}
+     <tr>
+      <th scope="row">{{ Catedratico.id_catedra }}</th>
+      <td>{{ Catedratico.Nombre }}</td>
+      <td>{{Catedratico.Apellido}}</td>
+      <td>{{Catedratico.Direccion}}</td>
+      <td>{{Catedratico.establecimiento_id_esta}}</td>
+
+      <td>
+                            <div class="my-2"></div>
+                            <a href="{% url 'ELIMINARCATEDRATICO' Catedratico.pk %}" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                            <div class="my-2"></div>
+      </td>
+      <td>
+
+                                <div class="my-2"></div>
+                            <a href="{% url 'MODIFICARCATEDRATICO' Catedratico.pk %}" class="btn btn-warning btn-icon-split">
+                                <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span class="text">Editar</span>
+                            </a>
+                        </td>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}

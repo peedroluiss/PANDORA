@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.contrib.auth.views import LoginView,logout_then_login
+from django.contrib.auth.decorators import login_required
 from Models.Calendario.views import FormularioCalendarioView
 from Models.Grado.views import FormularioGradoView
 from Models.Horario.views import FormularioHorarioView
@@ -27,12 +28,28 @@ from Models.Departamento.views import FormularioDepartamentoView
 from Models.Director.views import FormularioDirectorView
 from Models.Establecimiento.views import FormularioEstablecimientoView
 from Models.Municipio.views import FormularioMunicipioView
+from Models.Inscripcion.views import FormularioInscripcionView
 from Views.HomeView import HomeView
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
-    path('', HomeView.home, name='home'),
-    #GESTION GRADOS -KENNEDY-
+    path('', LoginView.as_view(template_name='Login.html'), name="login"),
+    path('accounts/login/', LoginView.as_view(template_name='Login.html'), name="login"),
+    path('inicio/', HomeView.home, name='home'),
+    path('reportes/', HomeView.reportes, name='report'),
+    path('reportestablecimiento/',FormularioEstablecimientoView.Reportpdf, name='reportpdfesta'),
+    path('reportecatedratico/',FormularioCatedraticoView.Reportpdfcatedratico, name='reportcatedratico'),
+    path('reportealumno/',FormularioAlumnoView.Reportpdfalumno, name='reportalumno'),
+    path('reporteinscripcion/',FormularioInscripcionView.ReportpdInscripcion, name='reportinscripcion'),
+    #path('reportesca/',FormularioCatedraticoView.listar_Catedraticos2, name='reportca'),
+    #path('busqueda',FormularioCatedraticoView.BoostrapFilterView, name='filtrodjango'),
+
+
+    path('logout/',logout_then_login, name ="logout"),
+
+    path('admin/', admin.site.urls),
+    #path('', HomeView.home, name='home'),
+
+    #GESTION HORARIOS -KENNEDY-
     path("registrarHorario/", FormularioHorarioView.indexh, name='registrarHorario'),
     path("guardarHorario/", FormularioHorarioView.procesar_formularioh, name='guardarHorario'),
     path("listarHorarios/", FormularioHorarioView.listar_horario, name='listarHorarios'),
@@ -108,5 +125,12 @@ urlpatterns = [
     path('listarEstablecimientos/', FormularioEstablecimientoView.listar_establecimientos, name='listarEstablecimientos'),
     path("editarEstablecimientos/<id>", FormularioEstablecimientoView.modificarE, name="MODIFICARE"),
     path("listarEstablecimientos/<id>", FormularioEstablecimientoView.eliminarE, name="ELIMINARE"),
+
+    #RUTAS INSCRIPCION
+path("registrarInscripcion/", FormularioInscripcionView.index, name='registrarInscripcion'),
+     path("guardarInscripcion/", FormularioInscripcionView.procesar_formulario_inscripcion, name='guardarInscripcion'),
+     path("listarInscripcions/", FormularioInscripcionView.listar_Inscripcions, name='listarInscripcions'),
+     path("listarInscripcions/<id>",FormularioInscripcionView.eliminarInscripcion, name="ELIMINARINSCRIPCION"),
+     path("editarInscripcions/<id>",FormularioInscripcionView.modificarInscripcion, name="MODIFICARINSCRIPCION"),
 ]
 

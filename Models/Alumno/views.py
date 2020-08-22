@@ -1,5 +1,8 @@
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
 from Models.Alumno.FormsAlumno import FormularioAlumno
 from Models.Alumno.models import Alumno
 
@@ -42,3 +45,22 @@ class FormularioAlumnoView(HttpRequest):
                     data['mensaje'] = "Se ha actualizado el registro."
                     data['form'] = formulario
             return render(request, 'Modificar_alumno.html', data)
+
+
+
+    def Reportpdfalumno(self, *args, **kwargs):
+        template = get_template('ReportesAlumnos.html')
+        context = {'report': Alumno.objects.all(),
+                   'comp': {'name': 'Reporte de Alumnos'}
+                   }
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="Alumnos.pdf"'
+        pisaStatus = pisa.CreatePDF(
+
+            html, dest=response)
+
+        if pisaStatus.err:
+            return HttpResponse('we had some errors <pre>' + html + '</pre>')
+
+        return response

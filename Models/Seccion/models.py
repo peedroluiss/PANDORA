@@ -8,4 +8,4 @@ class Seccion(models.Model):
     Nombre = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.Nombre
+            return '{}'.format(self.Nombre)
